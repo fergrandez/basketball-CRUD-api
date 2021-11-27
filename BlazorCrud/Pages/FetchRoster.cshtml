@@ -1,0 +1,51 @@
+﻿@page  
+@model BlazorCrud.Pages.FetchRosterModel
+
+@{
+    ViewData["Title"] = "FetchRoster";
+}
+  
+<h1>Player Data</h1>  
+<p>This component demonstrates fetching the Roster from the server.</p>  
+<p>  
+    <a href="/addplayer">Add New Player</a>  
+</p>  
+
+@if (Model.Roster == null)  
+{  
+    <p><em>Loading...</em></p>  
+}  
+else  
+{  
+    <table class='table'>  
+        <thead>  
+            <tr>  
+                <th>ID</th>  
+                <th>Name</th>  
+                <th>Number</th>  
+                <th>Position</th>  
+                <th>Points</th>  
+                <th>Assists</th>
+                <th>Rebounds</th>
+            </tr>  
+        </thead>  
+        <tbody>  
+            @foreach (var player in Model.Roster)  
+            {  
+                <tr>  
+                    <td>@player.Id</td>  
+                    <td>@player.Name</td>  
+                    <td>@player.Number</td>  
+                    <td>@player.Position</td>  
+                    <td>@player.Points</td>  
+                    <td>@player.Assists</td>  
+                    <td>@player.Rebounds</td>  
+                    <td>  
+                        <a href='/editplayer/@player.Id'>Edit</a>  |  
+                        <a href='/delete/@player.Id'>Delete</a>  
+                    </td>  
+                </tr>  
+            }  
+        </tbody>  
+    </table>  
+}
